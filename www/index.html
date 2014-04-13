@@ -10,8 +10,6 @@
 	
 	<script src="js/ionic.bundle.js"></script>
 
-	<!-- Needed for Cordova/PhoneGap (will be a 404 during development) -->
-	<script src="cordova.js"></script>
 	<script src="js/app.js"></script>
 	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=true"></script>
   </head>
@@ -42,7 +40,7 @@
 		  	  </div>
 		  </div>
 		</header>
-  		<div id="map"></div>
+  		<a href="http://maps.apple.com/maps?q={{ thaplace.address }}"><div id="map"></div></a>
   	</div>
   </body>
 </html>
