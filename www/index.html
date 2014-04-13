@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+	<title>Dipity</title>
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+	<link href="css/ionic.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+	
+	<script src="js/ionic.bundle.js"></script>
+
+	<!-- Needed for Cordova/PhoneGap (will be a 404 during development) -->
+	<script src="cordova.js"></script>
+	<script src="js/app.js"></script>
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=true"></script>
+  </head>
+  <body ng-app="serendipity" ng-controller="serendipityCtrl">
+  	<div ng-show="!isLoading && thaplace === null">
+	  	<h1>I want</h1>
+		<form>
+		    <fieldset>
+		        <input id="more-input" type="text" ng-model="input">   
+		    </fieldset>
+		    <h1 class="end-period">.</h1>
+		    <button type="submit" class="" ng-click="searchQuery(input)">Go</button>
+		</form>
+	</div>
+	<div ng-show="isLoading">
+		<div class="spinner-text">
+	  		<img id="spinner" src="img/spinner.png">
+	  		<p>thinking...</p>
+	  </div>
+  	</div>
+  	<div class="map-wrapper" ng-show="!isLoading && thaplace !== null">
+  		<header class="bar bar-header bar-dark">
+		  <div class="back-button" ng-click="restart()"><i class="ion-ios7-arrow-back"></i></div>
+		  <div clase="name-stars">
+			  <h1 class="title">{{ thaplace.name }}</h1>
+			  <div class="rating-stars">
+			  	<i class="ion-star" ng-repeat="i in [1, 2, 3, 4, 5] | limitTo: thaplace.rating"></i>
+		  	  </div>
+		  </div>
+		</header>
+  		<div id="map"></div>
+  	</div>
+  </body>
+</html>

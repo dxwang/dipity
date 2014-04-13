@@ -1,0 +1,158 @@
+
+
+html {
+	font-size: 32px;
+
+}
+
+body {
+	padding: 1rem;
+	background-image: url('../img/bg.jpg');
+	background-size: cover;
+
+}
+
+.body-wrapper {
+	padding: 0;
+}
+
+.map-wrapper {
+	height: 100%;
+	width: 100%;
+}
+
+
+#map {
+  height: 100%;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; 
+}
+
+
+h1 {
+	font-family: 'Helvetica', 'Arial', sans-serif;
+	font-weight: 300;
+	font-size: 2rem;
+	padding: none;
+	margin: 0;
+	margin-top: 0.3rem;
+	color: white;
+}
+
+.end-period {
+	margin-top: -0.05rem;
+	display: inline-block;
+	-webkit-transform: translateY(9px);
+      -o-transform: translateY(9px);
+         transform: translateY(9px);
+}
+
+
+
+form fieldset {
+	width: 80%;
+	display: inline-block;
+	border: none;
+	border-bottom: 1px solid white;
+	margin: 0;
+	padding: 0;
+}
+
+input#more-input {
+	height: 1.7rem;
+	font-size: 1.5rem;
+	background: none;
+	color: white;
+}
+
+button {
+	position: fixed;
+	bottom: 2.5rem;
+	display: block;
+	background-color: rgba(255,255,255, 0.9);
+	border: none;
+	padding: 1.2rem;
+	border-radius: 100%;
+	font-size: 1rem;
+	text-transform: uppercase;
+	font-style: italic;
+	color: #C1272D;
+	/*width: 20%;*/
+	left: 50%;
+	margin-left: -21%;
+}
+
+div.spinner-text {
+	position: relative;
+	margin: 30% 10%;
+	width: 80%;
+}
+
+img {
+	width: 100%;
+}
+
+p {
+	color: rgba(255,255,255,0.7);
+	font-size: 0.7rem;
+	font-weight: 300;
+	position: absolute;
+	top: 44%;
+	left: 27%;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to { 
+    transform: rotate(359deg);
+  }
+}
+ #spinner
+{
+    animation-name:             rotate; 
+    animation-duration:         1.3s; 
+    animation-iteration-count:  infinite;
+    animation-timing-function:  linear;
+    }
+
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to { 
+    -webkit-transform: rotate(359deg);
+  }
+}
+ #spinner
+{
+    -webkit-animation-name:             rotate; 
+    -webkit-animation-duration:         1.3s; 
+    -webkit-animation-iteration-count:  infinite;
+    -webkit-animation-timing-function:  linear;
+}
+
+div.back-button {
+	padding-top: 2px;
+	padding-left: 5px;
+	padding-right: 25px;
+	font-size: 27px;
+	z-index: 100;
+}
+
+div.rating-stars {
+	position: fixed;
+	right: 12px;
+	top: 12px;
+	font-size: 20px;
+}
+
+.bar .title {
+	position: absolute;
+	width: 150px;
+	left: 80px;
+	overflow: hidden;
+}
