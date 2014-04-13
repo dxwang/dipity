@@ -105,6 +105,7 @@ angular.module('serendipity', ['ionic'])
         		for (var i=0;i<results.length;i++){
         			var placeObj = {
         				name: results[i].name,
+                        address: results[i].formatted_address,
         				rating: results[i].rating || 3.5,
         				price: results[i].price_level || 4,
         				distance: distanceResults.rows[0].elements[i].distance.value,
