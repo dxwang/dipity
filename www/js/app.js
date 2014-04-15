@@ -55,9 +55,9 @@ angular.module('serendipity', ['ionic'])
             xfactor: 0.05
         };
         var scores = {
-            distance: 1 / (placeObj.distance * 4 + 1),
+            distance: 1 / ((placeObj.distance / 1000) * 4 + 1),
             rating: 1 / Math.pow((6 - placeObj.rating), 2),
-            price: (3 - placeObj.price) / 2,
+            price: 1 / placeObj.price,
             xfactor: Math.random()
         };
         var totalScore = 0;
