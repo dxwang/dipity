@@ -53,6 +53,7 @@ h1 {
 
 form fieldset {
 	width: 80%;
+	height: 1.7rem;
 	display: inline-block;
 	border: none;
 	border-bottom: 1px solid white;
@@ -61,15 +62,18 @@ form fieldset {
 }
 
 input#more-input {
-	height: 1.7rem;
-	font-size: 1.5rem;
+	height: 2rem;
+	font-size: 1.6rem;
 	background: none;
 	color: white;
+	padding-left: 0;
+	padding-bottom: 0.7rem;
+	font-weight: 300;
 }
 
 button {
 	position: fixed;
-	bottom: 2.5rem;
+	bottom: 2.1rem;
 	display: block;
 	background-color: rgba(255,255,255, 0.9);
 	border: none;
@@ -79,7 +83,6 @@ button {
 	text-transform: uppercase;
 	font-style: italic;
 	color: #C1272D;
-	/*width: 20%;*/
 	left: 50%;
 	margin-left: -21%;
 }
