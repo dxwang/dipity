@@ -16,33 +16,35 @@
 	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=true"></script>
   </head>
   <body ng-app="serendipity" ng-controller="serendipityCtrl">
-  	<div ng-show="!isLoading && thaplace === null">
-	  	<h1>I want</h1>
-		<form>
-		    <fieldset>
-		        <input id="more-input" type="text" ng-model="input">   
-		    </fieldset>
-		    <h1 class="end-period">.</h1>
-		    <button type="submit" class="" ng-click="searchQuery(input)">Go</button>
-		</form>
-	</div>
-	<div ng-show="isLoading">
-		<div class="spinner-text">
-	  		<img id="spinner" src="img/spinner.png">
-	  		<p>thinking...</p>
-	  </div>
-  	</div>
-  	<div class="map-wrapper" ng-show="!isLoading && thaplace !== null">
-  		<header class="bar bar-header bar-dark">
-		  <div class="back-button" ng-click="restart()"><i class="ion-ios7-arrow-back"></i></div>
-		  <div clase="name-stars">
-			  <h1 class="title">{{ thaplace.name }}</h1>
-			  <div class="rating-stars" ng-show="thaplace.rating >= 3">
-			  	<i class="ion-star" ng-repeat="i in [1, 2, 3, 4, 5] | limitTo: thaplace.rating"></i>
-		  	  </div>
+  	<div id="orient">
+	  	<div ng-show="!isLoading && thaplace === null">
+		  	<h1>I want</h1>
+			<form>
+			    <fieldset>
+			        <input id="more-input" type="text" ng-model="input" onclick="this.setSelectionRange(0, 9999)">   
+			    </fieldset>
+			    <h1 class="end-period">.</h1>
+			    <button type="submit" class="" ng-click="searchQuery()">Go</button>
+			</form>
+		</div>
+		<div ng-show="isLoading">
+			<div class="spinner-text">
+		  		<img id="spinner" src="img/spinner.png">
+		  		<p>thinking...</p>
 		  </div>
-		</header>
-  		<a href="http://maps.apple.com/maps?q={{ thaplace.address }}"><div id="map"></div></a>
+	  	</div>
+	  	<div class="map-wrapper" ng-show="!isLoading && thaplace !== null">
+	  		<header class="bar bar-header bar-dark">
+			  <div class="back-button" ng-click="restart()"><i class="ion-ios7-arrow-back"></i></div>
+			  <div clase="name-stars">
+				  <a href="{{ thaplace.website }}"><h1 class="title">{{ thaplace.name }}</h1></a>
+				  <div class="rating-stars" ng-show="thaplace.rating >= 3">
+				  	<i class="ion-star" ng-repeat="i in [1, 2, 3, 4, 5] | limitTo: thaplace.rating"></i>
+			  	  </div>
+			  </div>
+			</header>
+	  		<a href="http://maps.apple.com/maps?daddr={{ thaplace.address }}&saddr={{ startLocation.latitude + ',' + startLocation.longitude }}"><div id="map"></div></a>
+	  	</div>
   	</div>
   </body>
 </html>

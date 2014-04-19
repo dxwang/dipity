@@ -2,6 +2,10 @@ angular.module('serendipity', ['ionic'])
 
 .controller('serendipityCtrl', function($scope, $ionicModal, $ionicActionSheet){
     
+    document.ontouchstart = function(e){ 
+        e.preventDefault(); 
+    }
+
     var initializeMap = function(){
         $scope.map = new google.maps.Map(document.querySelector('#map'), {center: new google.maps.LatLng(-33.8668283734, 151.2064891821),
         zoom: 15});
@@ -16,7 +20,7 @@ angular.module('serendipity', ['ionic'])
 
     $scope.startLocation = '';
     $scope.thaplace = null;
-    $scope.input = 'Food';
+    $scope.input = '';
     $scope.isLoading = false;
     $scope.date = new Date();
 
@@ -74,7 +78,7 @@ angular.module('serendipity', ['ionic'])
             travelMode: google.maps.TravelMode.WALKING
         }
         var routeCallback = function(result, status){
-            if (status == google.maps.DirectionsStatus.OK) {
+            if (status === google.maps.DirectionsStatus.OK) {
                 $scope.mapRender.setDirections(result);
             }
             $scope.isLoading = false;
@@ -87,6 +91,19 @@ angular.module('serendipity', ['ionic'])
         $scope.direction.route(routeReq, routeCallback);
         console.log($scope.thaplace);
     };
+
+    $scope.getDetails = function(){
+        var detailReq = {
+            reference: $scope.thaplace.reference
+        }
+        var detailCallback = function(result, status){
+            if (status === google.maps.DirectionsStatus.OK){
+                $scope.thaplace.website = result.url
+            }
+            $scope.getDirections();
+        }
+        $scope.places.getDetails(detailReq, detailCallback);
+    }
 
     $scope.parseGoogleResponse = function(results){
         var locations = [];
@@ -110,14 +127,15 @@ angular.module('serendipity', ['ionic'])
         				price: results[i].price_level || 4,
         				distance: distanceResults.rows[0].elements[i].distance.value,
                         duration: distanceResults.rows[0].elements[i].duration.value,
-                        location: results[i].geometry.location
+                        location: results[i].geometry.location,
+                        reference: results[i].reference
         			}
            			placeObj['score'] = $scope.calcScore(placeObj);
         			if ($scope.thaplace === null || placeObj['score'] > $scope.thaplace.score){
             			$scope.thaplace = placeObj;
             		} 
         		}
-                $scope.getDirections();
+                $scope.getDetails();
 	        } else {
 	        	console.warn('Error with distanceMatrix');
 	        }
@@ -129,13 +147,15 @@ angular.module('serendipity', ['ionic'])
     $scope.restart = function(){
         document.querySelector('body').setAttribute('class', '');
         $scope.thaplace = null;
+        $scope.input = '';
     }
 
-    $scope.searchQuery = function(searchText){
+    $scope.searchQuery = function(){
+        document.getElementById('more-input').blur();
     	$scope.thaplace = null;
         $scope.isLoading = true;
         var searchReq = {
-            query: searchText,
+            query: $scope.input || 'food',
             radius: 5000,
             openNow: true
         };
