@@ -174,9 +174,9 @@ div.rating-stars {
 }
 
 .bar .title {
-	position: absolute;
+	/*position: absolute;
 	width: 150px;
-	left: 80px;
+	left: 80px;*/
 	overflow: hidden;
 }
 
