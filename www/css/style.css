@@ -5,10 +5,20 @@ html {
 
 }
 
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+} 
+
 body {
-	padding: 1rem;
+	padding: 1rem 1.5rem;
 	background-image: url('../img/bg.jpg');
 	background-size: cover;
+	height: 100%;
 
 }
 
@@ -38,7 +48,7 @@ h1 {
 	padding: none;
 	margin: 0;
 	margin-top: 0.3rem;
-	color: white;
+	color: rgba(255,255,255,0.96);
 }
 
 .end-period {
@@ -62,13 +72,13 @@ form fieldset {
 }
 
 input#more-input {
-	height: 2rem;
-	font-size: 1.6rem;
-	background: none;
-	color: white;
-	padding-left: 0;
-	padding-bottom: 0.7rem;
 	font-weight: 300;
+	height: 2rem;
+	font-size: 1.5rem;
+	background: none;
+	color: rgba(255,255,255,0.96);
+	padding-left: 0;
+	text-transform: lowercase;
 }
 
 button {
@@ -85,6 +95,16 @@ button {
 	color: #C1272D;
 	left: 50%;
 	margin-left: -21%;
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+}
+
+button:hover {
+	background-color: #C1272D;
+	color: white;
+	-webkit-box-shadow: 0px 0px 13px 0px rgba(255, 255, 255, 0.75);
+	-moz-box-shadow:    0px 0px 13px 0px rgba(255, 255, 255, 0.75);
+	box-shadow:         0px 0px 13px 0px rgba(255, 255, 255, 0.75);
 }
 
 div.spinner-text {
@@ -98,7 +118,7 @@ img {
 }
 
 p {
-	color: rgba(255,255,255,0.7);
+	color: rgba(255,255,255,0.9);
 	font-size: 0.7rem;
 	font-weight: 300;
 	position: absolute;
@@ -159,3 +179,56 @@ div.rating-stars {
 	left: 80px;
 	overflow: hidden;
 }
+
+@media (min-width: 650px) {
+
+
+  body {
+  	padding: 5rem 0 0 30%;
+    background-image: url('../img/nightsky.png');
+    background-repeat: no-repeat;
+    height:3000px;
+    background-position: center center;
+  }
+
+  h1 {
+  	display: inline-block;
+  	font-weight: 300;
+  }
+
+ 
+  form {
+  	display: inline-block;
+  	width: 40%;
+  	margin-left: 0.4rem;
+  }
+
+form fieldset {
+	height: 2.3rem;
+}
+
+  input#more-input {
+  	font-size: 2rem;
+  	height: 2.1rem;
+  }
+
+  div.spinner-text {
+	margin: 0 12%;
+	width: 40%;
+}
+
+p {
+	text-align: center;
+	width: 50%;
+	font-size: 0.9rem;
+	top: 44%;
+	left: 24%;
+}
+
+  button {
+  	bottom: 33%;
+  	left: 65%;
+	margin-left: -21%;
+  }
+}
+
